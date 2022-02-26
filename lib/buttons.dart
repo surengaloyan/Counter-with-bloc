@@ -17,7 +17,6 @@ class CustomButtons extends StatelessWidget {
               Ink(
                 child: IconButton(
                   onPressed: () {
-                    // print('hi!');
                     BlocProvider.of<CounterCubit>(context).decrement();
                   },
                   icon: const Icon(Icons.remove),
