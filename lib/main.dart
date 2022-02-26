@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import 'buttons.dart';
 import 'cubit/counter_cubit.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
-    return Counter();
+    return const Counter();
   }
 }
 
@@ -26,36 +29,7 @@ class _CounterState extends State<Counter> {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => CounterCubit(),
-      child: MaterialApp(
-          home: Scaffold(
-        appBar: AppBar(
-          title: const Text('counter'),
-        ),
-        body: Center(
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              Ink(
-                child: IconButton(
-                  onPressed: () {
-                    BlocProvider.of<CounterCubit>(context).decrement();
-                  },
-                  icon: Icon(Icons.remove),
-                ),
-              ),
-              Text('0'),
-              Ink(
-                child: IconButton(
-                  onPressed: () {
-                    BlocProvider.of<CounterCubit>(context).increment();
-                  },
-                  icon: Icon(Icons.add),
-                ),
-              ),
-            ],
-          ),
-        ),
-      )),
+      child: CustomButtons(),
     );
   }
 }
